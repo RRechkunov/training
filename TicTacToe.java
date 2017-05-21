@@ -101,34 +101,26 @@ class TicTacToe{
 	boolean checkWinner(char sym){
 		char [] diag1 = new char[SIZE];
 		char [] diag2 = new char[SIZE];
-		int size = SIZE*SIZE;
-		char [] line = new char [size];
-		char [] row = new char [size];
-		int z = 0;
-		int sumline=0; 
-		int sumrow=0;
 		int sumdiag1=0;
 		int sumdiag2=0;
 		for (int i = 0;i<SIZE ;i++) {
-			for (int j = 0;j<SIZE ;j++) {
-				line[z] = map[i][j];
-				row[z] = map [j][i];
-				z++;	 
+			int sumline = 0; 
+			int sumrow = 0;
+			for (int j = 0;j<SIZE ;j++) {		// find hor&vert line with WINLENGTH.length
+				if (map[i][j] == sym)
+					sumline++;
+				else sumline = 0;	
+				if (map[j][i] == sym) 
+					sumrow++;
+				else sumrow = 0;
+				if ((sumline == WINLENGTH)||(sumrow == WINLENGTH)) return true;		 	
 
 				if (i==j) diag1[i] = map[i][j];			
 				if (i==SIZE-j-1) diag2[i] = map[i][j];		
-			}		 	
+			}
+
 		} 
 		
-		for (int i = 0; i<size; i++){
-			if (line[i] == sym) 
-				sumline++;
-			else sumline = 0;	  
-			if (row[i] == sym) 
-				sumrow++;
-			else sumrow = 0;
-			if ((sumline == WINLENGTH)||(sumrow == WINLENGTH)) return true;
-		}
 		for (int i = 0; i< SIZE; i++){
 			if (diag1[i] == sym)
 				sumdiag1++;
