@@ -1,5 +1,4 @@
 # training
-training programing examples<br>
 <b>TicTacToe.java</b> tic tac toe game;<br>
 <b>Company.java</b> OOP start. lesson 1. incapsulation;<br>
 <b>Oop2.java</b>  OOP lesson2. inheritanse,incapsulation<br>
