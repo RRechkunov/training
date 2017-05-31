@@ -21,7 +21,7 @@ class Oop3 {
 			plate.info();
 			cat.info();
 		}	
-		plate.fillPlate();
+		plate.fillPlate(30);
 		plate.info();
 	}	
 }
@@ -67,8 +67,8 @@ class Plate {
 			return true;
 		} else return false;	
 	} 
-	public void fillPlate(){
-		System.out.println("Put some feed in the plate");	
-		food = 100;
+	public void fillPlate(int food){
+		System.out.printf("Put some food in the plate(%s)\n",food);	
+		this.food += food;
 	}
 }
