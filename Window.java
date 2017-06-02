@@ -5,7 +5,7 @@
 * 
 * #Swing, #JFrame, 
 *
-*	#JSlider, #JProgressBar  #JMenuBar, 
+*	#JSlider, #JProgressBar  #JMenuBar   -  add it to this example later
 */
 import javax.swing.*;
 import java.awt.event.*;
