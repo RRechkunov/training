@@ -25,7 +25,7 @@ class Calc extends JFrame implements ActionListener{
 
 	JLabel display = new JLabel("0");
 
-	final char [] OPERATORS = {'+','-','*','+','=','%','^','C'}; 
+	final char [] OPERATORS = {'+','-','*','/','^','=','C'}; 
 	final char [] DIGITS = {'<','.','0','1','2','3','4','5','6','7','8','9'};
 
 	private int a,b;
@@ -71,7 +71,6 @@ class Calc extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		String text = display.getText();
 		char key = e.getActionCommand().charAt(0);
-		
   		
   		switch (key) {
   			case '0': case '9': case '8': case '7':case '6'	: case '5':
@@ -88,7 +87,7 @@ class Calc extends JFrame implements ActionListener{
   				display.setText(display.getText()+e.getActionCommand());
 
   			break;	
-			case '-': case '+': case '/': case '*':
+			case '-': case '+': case '/': case '*': case '^':
 				a = Integer.parseInt(text);
 				operator = key;
 				inmemory = true;
@@ -108,9 +107,7 @@ class Calc extends JFrame implements ActionListener{
 			case '%':
 	   			System.out.println("not realised yet");
 				break;
-			case '^':
-	   			System.out.println("not realised yet");
-				break;		
+			
 		}
     }
 
@@ -131,7 +128,11 @@ class Calc extends JFrame implements ActionListener{
 				break;
 			case '*':
 				result = a*b;
-				break;	
+				break;
+			case '^':
+				for (int i=2;i<=b;i++) a*=a;
+				result = a;
+				break;		
 		}
 								
 		System.out.printf("a = %d; b = %d ; key = %c\n",a,b,op);
