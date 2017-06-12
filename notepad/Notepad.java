@@ -61,7 +61,6 @@ class Notepad extends JFrame {
 		menubar.add(mfile);
 		menubar.add(medit);
 		setJMenuBar(menubar);
-
 	}
 
 	void initWorkPlace(){
@@ -80,12 +79,11 @@ class Notepad extends JFrame {
 		this.add(wppanel);
 	}
 
-	
 	void initListeners(){
 
 		mfopen.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-				FileDialog filedialog = new FileDialog((Frame) null,"Load file",FileDialog.LOAD); 
+				FileDialog filedialog = new FileDialog(this.getClass().getName(),"Load file",FileDialog.LOAD); 
 				filedialog.show();
 				textarea.append(filedialog.getDirectory()+filedialog.getFile()+"\n");
             }
@@ -105,7 +103,7 @@ class Notepad extends JFrame {
 
     	mfsettings.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-              
+            
             }
         }); 
     
