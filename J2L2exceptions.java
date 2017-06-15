@@ -23,6 +23,9 @@ class J2L2exceptions {
 		sizex++;
 		sizey = t.indexOf("\n");
 		
+		if ((sizex != 4) || (sizey != 4))
+			throw new NullPointerException("Wrong array size");
+
 		t = cleanEnters(t);
 
 		String [][] result = new String[sizex][sizey];
@@ -52,7 +55,7 @@ class J2L2exceptions {
 					result[i][j]=Integer.parseInt(tarr[i][j]);
 					calculation += result[i][j];
 					}
-				catch (Exception ex) {
+				catch (NumberFormatException ex) {
 					System.out.print(ex);
 					System.out.printf(" in %s - %s\n",j+1,i+1);
 				}			
