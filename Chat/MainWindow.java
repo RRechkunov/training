@@ -6,11 +6,14 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.*;
 
 class MainWindow extends JFrame implements ActionListener{
 	
 	JTextArea messagelist;
 	JTextField message;
+
+	Date date;
 
 	MainWindow(){
 		super("My chat");
@@ -34,13 +37,17 @@ class MainWindow extends JFrame implements ActionListener{
 		add(new JScrollPane(messagelist),BorderLayout.CENTER);
 		add(bottompanel,BorderLayout.SOUTH);
 		setVisible(true);
+
+		date = new Date();
+		message.requestFocusInWindow();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent ev){
-		if (message.getText().length()>0){
-			messagelist.append(message.getText()+"\n");
+		if (message.getText().trim().length()>0){
+			messagelist.append("("+date+") "+ message.getText()+"\n");
 		}
 		message.setText("");
+		message.requestFocusInWindow();
 	}
 }
