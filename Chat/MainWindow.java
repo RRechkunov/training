@@ -9,7 +9,7 @@ import java.awt.event.*;
 
 class MainWindow extends JFrame implements ActionListener{
 	
-	JTextPane messagelist;
+	JTextArea messagelist;
 	JTextField message;
 
 	MainWindow(){
@@ -17,9 +17,8 @@ class MainWindow extends JFrame implements ActionListener{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setBounds(300,300, 400,500);
 
-		messagelist = new JTextPane();
+		messagelist = new JTextArea();
 		messagelist.setEditable(false);
-		messagelist.setContentType("text/html");
 		
 		JPanel bottompanel = new JPanel();
 				
@@ -38,9 +37,10 @@ class MainWindow extends JFrame implements ActionListener{
 	}
 
 	@Override
-	public void ActionPerfermed(ActionEvent ev){
+	public void actionPerformed(ActionEvent ev){
 		if (message.getText().length()>0){
-			//messagelist.add(message.getText());
+			messagelist.append(message.getText()+"\n");
 		}
+		message.setText("");
 	}
 }
