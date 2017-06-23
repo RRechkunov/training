@@ -7,13 +7,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
+import java.text.SimpleDateFormat;
+import java.io.*;
 
 class MainWindow extends JFrame implements ActionListener{
 	
 	JTextArea messagelist;
 	JTextField message;
-
-	Date date;
 
 	MainWindow(){
 		super("My chat");
@@ -38,14 +38,27 @@ class MainWindow extends JFrame implements ActionListener{
 		add(bottompanel,BorderLayout.SOUTH);
 		setVisible(true);
 
-		date = new Date();
 		message.requestFocusInWindow();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent ev){
+		SimpleDateFormat dateformat = new SimpleDateFormat("HH:mm:ss");
+		String s = "("+dateformat.format(new Date())+") "+ message.getText()+"\n";
 		if (message.getText().trim().length()>0){
-			messagelist.append("("+date+") "+ message.getText()+"\n");
+			messagelist.append(s);
+			try 
+			{
+				PrintWriter pw = new PrintWriter(new FileWriter("Dialogs.txt",true)); 
+				pw.println(s);
+				//pw.flush();
+				pw.close();
+			}
+			catch (IOException e) 
+			{
+				System.out.println("Output error");
+			}
+
 		}
 		message.setText("");
 		message.requestFocusInWindow();
